@@ -83,19 +83,19 @@ export default function PersonalInfo() {
       setSubmitting(true);
 
       if (personalInfo) {
-        const response = await axios.patch(
-          `/api/profile/personalInfo/${personalInfo._id}`,
-          inputs,
-          {
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
-            },
-          }
+       const response = await axios.patch(
+            "/api/profile/personalInfo",
+            inputs,
+            {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${localStorage.getItem("token")}`,
+                },
+            }
         );
 
         if (response.status === 200) {
-          setPersonalInfo(response.data.data);
+          setPersonalInfo(response.data.newData);
           toast.success(response.data.message);
         }
       } else {
