@@ -76,7 +76,7 @@ export default function Experience(){
         const experienceData = async () =>{
             try{
              
-                const response = await axios.get("http://localhost:3000/api/profile/experience",{
+                const response = await axios.get("/api/profile/experience",{
                 headers:{
                     "Content-Type": "application/json",
                     "Authorization": `Bearer ${localStorage.getItem("token")}`
@@ -105,7 +105,7 @@ export default function Experience(){
             let res;
 
             if(editForm){
-                 res = await axios.patch(`http://localhost:3000/api/profile/experience/${editForm._id}`, inputs,{
+                 res = await axios.patch(`/api/profile/experience/${editForm._id}`, inputs,{
                     headers:{
                     "Content-Type": "application/json",
                     "Authorization": `Bearer ${localStorage.getItem("token")}`
@@ -139,7 +139,7 @@ export default function Experience(){
             }
 
             }else{
-                res = await axios.post("http://localhost:3000/api/profile/experience", inputs,{
+                res = await axios.post("/api/profile/experience", inputs,{
                 headers:{
                     "Content-Type": "application/json",
                     "Authorization": `Bearer ${localStorage.getItem("token")}`
@@ -171,7 +171,7 @@ export default function Experience(){
 
     const deleteExperience = async (id) =>{
         try{
-            const response = await axios.delete(`http://localhost:3000/api/profile/experience/${id}`,{
+            const response = await axios.delete(`/api/profile/experience/${id}`,{
             headers:{
                 "Content-Type": "application/json",
                 "Authorization": `Bearer ${localStorage.getItem("token")}`

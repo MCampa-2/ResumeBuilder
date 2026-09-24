@@ -69,7 +69,7 @@ export default function Projects(){
             setSubmitting(true);
 
             if(getSelected !== null){
-                const response = await axios.patch(`http://localhost:3000/api/profile/projects/${getSelected._id}`, inputs, {
+                const response = await axios.patch(`/api/profile/projects/${getSelected._id}`, inputs, {
                 headers:{
                     "Content-Type": "application/json",
                     "Authorization": `Bearer ${localStorage.getItem("token")}`
@@ -99,7 +99,7 @@ export default function Projects(){
             }
             if(getSelected === null){
                
-            const response = await axios.post("http://localhost:3000/api/profile/projects", inputs, {
+            const response = await axios.post("/api/profile/projects", inputs, {
                 headers:{
                     "Content-Type": "application/json",
                     "Authorization": `Bearer ${localStorage.getItem("token")}`
@@ -134,7 +134,7 @@ export default function Projects(){
 
     const deleteProject = async (id) =>{
         try{
-            const response = await axios.delete(`http://localhost:3000/api/profile/projects/${id}`,{
+            const response = await axios.delete(`/api/profile/projects/${id}`,{
                 headers:{
                     "Content-Type": "application/json",
                     "Authorization": `Bearer ${localStorage.getItem("token")}`
@@ -160,7 +160,7 @@ export default function Projects(){
     useEffect(() =>{
         const getProjects = async () =>{
             try{
-                const response = await axios.get("http://localhost:3000/api/profile/projects",{
+                const response = await axios.get("/api/profile/projects",{
                     headers: {
                         "Content-Type": "application/json",
                         "Authorization": `Bearer ${localStorage.getItem("token")}`

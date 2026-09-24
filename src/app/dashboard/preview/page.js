@@ -27,7 +27,7 @@ export default function Preview(){
     useEffect(() =>{
         const getData = async () =>{
             try{
-                const response = await axios.get("http://localhost:3000/api/resume",{
+                const response = await axios.get("/api/resume",{
                 headers: {
                     "Content-Type": "application/json",
                     "Authorization": `Bearer ${localStorage.getItem("token")}`

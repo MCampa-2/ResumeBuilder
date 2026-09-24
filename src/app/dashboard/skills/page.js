@@ -104,7 +104,7 @@ export default function Skills(){
             e.preventDefault();
 
             if(getData){
-                 const response = await axios.patch(`http://localhost:3000/api/profile/skills/${getData._id}`, editState,{
+                 const response = await axios.patch(`/api/profile/skills/${getData._id}`, editState,{
                 headers:{
                     "Content-Type": "application/json",
                     "Authorization": `Bearer ${localStorage.getItem("token")}`
@@ -123,7 +123,7 @@ export default function Skills(){
                 });
             }
             }else{
-                  const response = await axios.post("http://localhost:3000/api/profile/skills", editState,{
+                  const response = await axios.post("/api/profile/skills", editState,{
                 headers:{
                     "Content-Type": "application/json",
                     "Authorization": `Bearer ${localStorage.getItem("token")}`
@@ -157,7 +157,7 @@ export default function Skills(){
         const getSkills = async () =>{
           try{
             setLoading(true);
-              const response = await axios.get("http://localhost:3000/api/profile/skills", {
+              const response = await axios.get("/api/profile/skills", {
                 headers: {
                     "Content-Type": "application/json",
                     "Authorization": `Bearer ${localStorage.getItem("token")}`
@@ -204,7 +204,7 @@ export default function Skills(){
     const resetSkills = async () =>{
        try{
         
-        const response = await axios.delete(`http://localhost:3000/api/profile/skills/${getData._id}`,{
+        const response = await axios.delete(`/api/profile/skills/${getData._id}`,{
             headers:{
                 "Content-Type": "application/json",
                 "Authorization": `Bearer ${localStorage.getItem("token")}`

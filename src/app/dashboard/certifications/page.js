@@ -67,7 +67,7 @@ export default function Certification(){
             e.preventDefault();
            
             if(selectedCert){
-                const response = await axios.patch(`http://localhost:3000/api/profile/certifications/${selectedCert._id}`,inputs, {
+                const response = await axios.patch(`/api/profile/certifications/${selectedCert._id}`,inputs, {
                     headers: {
                         "Content-Type": "application/json",
                         "Authorization": `Bearer ${localStorage.getItem("token")}`
@@ -97,7 +97,7 @@ export default function Certification(){
                     toast.success(response.data.message);
                 }
             }else{ 
-                const response = await axios.post("http://localhost:3000/api/profile/certifications", inputs, {
+                const response = await axios.post("/api/profile/certifications", inputs, {
                 headers:{
                     "Content-Type": "application/json",
                     "Authorization": `Bearer ${localStorage.getItem("token")}`
@@ -136,7 +136,7 @@ export default function Certification(){
     useEffect(() =>{
         const getData = async () =>{
             try{
-                const response = await axios.get("http://localhost:3000/api/profile/certifications",{
+                const response = await axios.get("/api/profile/certifications",{
                     headers:{
                         "Content-Type": "application/json",
                         "Authorization": `Bearer ${localStorage.getItem("token")}`
@@ -162,7 +162,7 @@ export default function Certification(){
 
     const deleteCertificate = async (id) =>{
         try{
-            const response = await axios.delete(`http://localhost:3000/api/profile/certifications/${id}`,{
+            const response = await axios.delete(`/api/profile/certifications/${id}`,{
                 headers: {
                     "Content-Type": "application/json",
                     "Authorization": `Bearer ${localStorage.getItem("token")}`

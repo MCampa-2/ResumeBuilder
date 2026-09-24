@@ -41,7 +41,7 @@ export default function PersonalInfo() {
     const getData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:3000/api/profile/personalInfo",
+          "/api/profile/personalInfo",
           {
             headers: {
               "Content-Type": "application/json",
@@ -84,7 +84,7 @@ export default function PersonalInfo() {
 
       if (personalInfo) {
         const response = await axios.patch(
-          `http://localhost:3000/api/profile/personalInfo/${personalInfo._id}`,
+          `/api/profile/personalInfo/${personalInfo._id}`,
           inputs,
           {
             headers: {
@@ -100,7 +100,7 @@ export default function PersonalInfo() {
         }
       } else {
         const response = await axios.post(
-          "http://localhost:3000/api/profile/personalInfo",
+          "/api/profile/personalInfo",
           inputs,
           {
             headers: {

@@ -46,7 +46,7 @@ export default function PersonalInfo(){
             setSubmitting(true);
             const method = hasData ? "patch": "post";
 
-            const response = await axios[method]("http://localhost:3000/api/profile/personalInfo", data ,{
+            const response = await axios[method]("/api/profile/personalInfo", data ,{
                 headers: {
                     "Content-Type": "application/json",
                     "Authorization": `Bearer ${localStorage.getItem("token")}`
@@ -82,7 +82,7 @@ export default function PersonalInfo(){
     useEffect((e) =>{
         const getPersonalInfo = async () =>{
             try{
-                const response = await axios.get("http://localhost:3000/api/profile/personalInfo",{
+                const response = await axios.get("/api/profile/personalInfo",{
                     headers:{
                         "Content-Type": "application/json",
                         "Authorization": `Bearer ${localStorage.getItem("token")}`

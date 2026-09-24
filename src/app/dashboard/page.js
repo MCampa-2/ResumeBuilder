@@ -53,7 +53,7 @@ export default function Dashboard(){
     useEffect(() =>{
         const getUser = async () =>{
             try{
-                const response = await axios.get("http://localhost:3000/api/user", {
+                const response = await axios.get("/api/user", {
                     headers:{
                         "Content-Type": "application/json",
                         "Authorization": `Bearer ${localStorage.getItem("token")}`
@@ -78,7 +78,7 @@ export default function Dashboard(){
     useEffect(() =>{
         const getResume = async () =>{
             try{
-                const response = await axios.get("http://localhost:3000/api/resume",{
+                const response = await axios.get("/api/resume",{
                 headers: {
                     "Content-Type": "application/json",
                     "Authorization": `Bearer ${localStorage.getItem("token")}`
