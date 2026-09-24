@@ -1,30 +1,67 @@
 "use client";
+
 import { HiOutlineNewspaper } from "react-icons/hi2";
 import { useRouter } from "next/navigation";
 
-export default function DashTopNav({openNav,toggleNav}){
+export default function DashTopNav({ openNav, toggleNav }) {
 
     const router = useRouter();
 
-    const homePage = () =>{
+    const homePage = () => {
         router.push("/");
-    }
+    };
 
-    return(
-        <nav className="flex items-center md:hidden p-5 bg-shadowGrey">
-                 <div className="flex justify-center items-center cursor-pointer" onClick={homePage}>
-                    <HiOutlineNewspaper className="text-lavenderGrey text-2xl md:text-3xl"/>
-                    <div className="flex justify-center items-center ml-2">
-                        <p className="mr-1 text-white text-lg md:text-xl">Resume</p>
-                        <p className="text-lavenderGrey text-lg md:text-xl">Builder</p>
-                    </div>
+    return (
+        <nav className="flex items-center md:hidden p-5 bg-shadowGrey relative z-20">
+
+            <div
+                className="flex justify-center items-center cursor-pointer"
+                onClick={homePage}
+            >
+                <HiOutlineNewspaper className="text-lavenderGrey text-2xl" />
+
+                <div className="flex justify-center items-center ml-2">
+                    <p className="mr-1 text-white text-lg">
+                        Resume
+                    </p>
+
+                    <p className="text-lavenderGrey text-lg">
+                        Builder
+                    </p>
                 </div>
+            </div>
 
-                <div className="hamburger flex flex-col cursor-pointer ml-auto" onClick={openNav}>
-                    <div className={`bar1 ${toggleNav ? "toggle" : ""}`}></div>
-                    <div className={`bar2 ${toggleNav ? "toggle" : ""}`}></div>
-                    <div className={`bar3 ${toggleNav ? "toggle" : ""}`}></div>
-                </div> 
+            <button
+                type="button"
+                onClick={openNav}
+                aria-label="Toggle navigation"
+                className="flex flex-col justify-center gap-[5px] ml-auto w-8 h-8 relative z-50"
+            >
+                <span
+                    className={`
+                        block w-7 h-[3px] bg-white rounded
+                        transition-all duration-300
+                        ${toggleNav ? "translate-y-2 rotate-45" : ""}
+                    `}
+                />
+
+                <span
+                    className={`
+                        block w-7 h-[3px] bg-white rounded
+                        transition-all duration-300
+                        ${toggleNav ? "opacity-0" : ""}
+                    `}
+                />
+
+                <span
+                    className={`
+                        block w-7 h-[3px] bg-white rounded
+                        transition-all duration-300
+                        ${toggleNav ? "-translate-y-2 -rotate-45" : ""}
+                    `}
+                />
+            </button>
+
         </nav>
-    )
+    );
 }
