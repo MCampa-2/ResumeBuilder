@@ -1,26 +1,161 @@
-@import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+:root{
+--shadow-grey: #272838ff;
+--vintage-grape: #5d536bff;
+--vintage-lavender: #7d6b91ff;
+--lavender-grey: #989fceff;
+--steel-blue: #347fc4ff;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+
+/* Navbar */
+
+.navbar {
+  background-color: var(--shadow-grey);
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.navbar .logo{
+  color: var(--lavender-grey);
+  font-weight: bold;
+}
+
+
+.register{
+  color: var(--lavender-grey);
+  margin-right: 10px;
+}
+
+.login{
+  color: var(--lavender-grey);
+}
+
+.login:hover,.register:hover{
+  color: var(--vintage-lavender);
+}
+
+
+.mobile-links{
+  color: var(--lavender-grey);
+}
+
+.mobile-register-link:hover, .mobile-login-link:hover{
+  color: var(--vintage-grape);
+}
+
+
+
+.bar1,.bar2,.bar3{
+  width: 30px;
+  height: 4px;
+  margin: 2px;
+  background-color: var(--lavender-grey);
+  transition: .7s;
+}
+
+
+.bar1.toggle{
+  transform: scale(1.6,1);
+}
+
+.bar2.toggle{
+  transform: scale(1.3,1);
+}
+
+.bar3.toggle{
+  transform: scale(1,1);
+}
+
+
+
+
+/* Hero Section */
+
+.hero-container{
+  margin: 20px;
+}
+
+.hero-main{
+  background-color: var(--lavender-grey);
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 10px;
+  border-left: 10px solid var(--shadow-grey);
+}
+
+.hero-main h1{
+  margin-bottom: 10px;
+}
+
+.hero-main p{
+  margin-bottom: 20px;
+}
+
+.cta{
+  background-color: var(--vintage-lavender);
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  justify-content: center;
+  margin: 10px auto;
+  text-align: center;
+  padding: 5px;
+}
+
+.cta:hover{
+  background-color: var(--vintage-grape);
+}
+
+
+.resume-img{
+  box-shadow: 0 0 7px var(--shadow-grey);
+}
+
+.example{
+  color: var(--shadow-grey);
+  margin-bottom: 5px;
+}
+
+.features{
+  background-color: var(--steel-blue);
+  color: white;
+  margin-top: 20px;
+  padding: 10px;
+}
+
+
+.features li{
+  margin: 15px;
+}
+
+.how-it-works{
+  background-color: var(--vintage-grape);
+  color: white;
+  padding: 10px;
+  margin-top: 20px;
+}
+
+
+.how-it-works li{
+  margin: 15px;
+}
+
+
+.footer{
+  background-color: var(--shadow-grey);
+  padding: 10px;
+  color: var(--lavender-grey);
 }
