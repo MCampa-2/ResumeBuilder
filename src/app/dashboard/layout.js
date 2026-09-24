@@ -1,4 +1,3 @@
-
 "use client";
 
 import DashboardSideNav from "../../Components/DashSideNav";
@@ -20,11 +19,13 @@ export default function Layout({ children }) {
     return (
         <div className="flex min-h-screen">
 
+            {/* Sidebar */}
             <DashboardSideNav
                 toggleNav={toggleNav}
                 closeSideNav={closeSideNav}
             />
 
+            {/* Dark background behind mobile sidebar */}
             {toggleNav && (
                 <div
                     className="fixed inset-0 bg-black/50 z-30 md:hidden"
@@ -32,6 +33,7 @@ export default function Layout({ children }) {
                 />
             )}
 
+            {/* Main dashboard */}
             <div className="flex flex-col flex-1 min-w-0 min-h-screen">
 
                 <DashTopNav
@@ -39,7 +41,7 @@ export default function Layout({ children }) {
                     toggleNav={toggleNav}
                 />
 
-                <main className="flex-1 min-w-0">
+                <main className="flex-1">
                     {children}
                 </main>
 
