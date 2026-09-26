@@ -3,8 +3,18 @@
 export default function ExecutiveResume({ data }) {
   if (!data) return null;
 
-  const { personalInfo, experience, education, projects, skill, cert } = data;
-  const fullName = `${personalInfo?.fname || ""} ${personalInfo?.lname || ""}`;
+  const {
+    personalInfo,
+    experience,
+    education,
+    projects,
+    skill,
+    cert,
+  } = data;
+
+  const fullName = `${personalInfo?.fname || ""} ${
+    personalInfo?.lname || ""
+  }`;
 
   const convertDate = (date) => {
     if (!date) return "";
@@ -13,7 +23,7 @@ export default function ExecutiveResume({ data }) {
 
   return (
     <div className="bg-white text-black p-8 text-xs min-h-full">
-      
+
       {/* Header */}
       <header className="border-b-4 border-black pb-4">
         <h1 className="text-3xl font-bold tracking-wide uppercase">
@@ -38,9 +48,12 @@ export default function ExecutiveResume({ data }) {
       {personalInfo?.summary && (
         <section className="mt-5">
           <h2 className="uppercase font-bold tracking-wider text-vintageLavender">
-            Executive Profile
+            Professional Summary
           </h2>
-          <p className="mt-2 leading-relaxed">{personalInfo.summary}</p>
+
+          <p className="mt-2 leading-relaxed">
+            {personalInfo.summary}
+          </p>
         </section>
       )}
 
@@ -55,12 +68,22 @@ export default function ExecutiveResume({ data }) {
             <div key={i} className="mt-4">
               <div className="flex justify-between gap-4">
                 <div>
-                  <p className="font-bold text-sm first-letter:uppercase">{x.title}</p>
-                  {x.company && <p className="italic first-letter:uppercase">{x.company}</p>}
+                  <p className="font-bold text-sm first-letter:uppercase">
+                    {x.title}
+                  </p>
+
+                  {x.company && (
+                    <p className="italic first-letter:uppercase">
+                      {x.company}
+                    </p>
+                  )}
                 </div>
 
                 <p className="text-[11px] whitespace-nowrap">
-                  {convertDate(x.startDate)} - {x.current ? "Present" : convertDate(x.endDate)}
+                  {convertDate(x.startDate)} -{" "}
+                  {x.current
+                    ? "Present"
+                    : convertDate(x.endDate)}
                 </p>
               </div>
 
@@ -83,7 +106,9 @@ export default function ExecutiveResume({ data }) {
 
           {projects.map((x, i) => (
             <div key={i} className="mt-3">
-              <p className="font-bold">{x.projectName}</p>
+              <p className="font-bold">
+                {x.projectName}
+              </p>
 
               {x.description && (
                 <ul className="list-disc ml-5 mt-1">
@@ -93,7 +118,10 @@ export default function ExecutiveResume({ data }) {
 
               {x.technologies?.length > 0 && (
                 <p className="text-[11px] mt-1">
-                  <span className="font-semibold">Core Technologies: </span>
+                  <span className="font-semibold">
+                    Core Technologies:{" "}
+                  </span>
+
                   {x.technologies.join(", ")}
                 </p>
               )}
@@ -104,7 +132,8 @@ export default function ExecutiveResume({ data }) {
 
       {/* Bottom Grid */}
       <div className="grid grid-cols-2 gap-6 mt-5">
-        
+
+        {/* Education */}
         {education?.length > 0 && (
           <section>
             <h2 className="uppercase font-bold tracking-wider text-vintageLavender border-b border-gray-300 pb-1">
@@ -113,39 +142,72 @@ export default function ExecutiveResume({ data }) {
 
             {education.map((x, i) => (
               <div key={i} className="mt-2">
-                <p className="font-bold">{x.schoolName}</p>
-                {x.degree && <p>{x.degree}</p>}
+                <p className="font-bold">
+                  {x.schoolName}
+                </p>
+
+                {x.degree && (
+                  <p>{x.degree}</p>
+                )}
+
                 <p className="text-[11px]">
-                  {convertDate(x.startDate)} - {x.current ? "Present" : convertDate(x.endDate)}
+                  {convertDate(x.startDate)} -{" "}
+                  {x.current
+                    ? "Present"
+                    : convertDate(x.endDate)}
                 </p>
               </div>
             ))}
           </section>
         )}
 
+        {/* Skills */}
         {skill && (
           <section>
             <h2 className="uppercase font-bold tracking-wider text-vintageLavender border-b border-gray-300 pb-1">
               Core Skills
             </h2>
 
+            {/* Technical Skills */}
             {skill.technicalSkills?.length > 0 && (
               <p className="mt-2">
-                <span className="font-semibold">Technical: </span>
+                <span className="font-semibold">
+                  Technical:{" "}
+                </span>
+
                 {skill.technicalSkills.join(", ")}
               </p>
             )}
 
+            {/* Tools */}
+            {skill.tools?.length > 0 && (
+              <p className="mt-1">
+                <span className="font-semibold">
+                  Tools:{" "}
+                </span>
+
+                {skill.tools.join(", ")}
+              </p>
+            )}
+
+            {/* Soft Skills */}
             {skill.softSkills?.length > 0 && (
               <p className="mt-1">
-                <span className="font-semibold">Soft: </span>
+                <span className="font-semibold">
+                  Soft:{" "}
+                </span>
+
                 {skill.softSkills.join(", ")}
               </p>
             )}
 
+            {/* Strengths */}
             {skill.strengths?.length > 0 && (
               <p className="mt-1">
-                <span className="font-semibold">Strengths: </span>
+                <span className="font-semibold">
+                  Strengths:{" "}
+                </span>
+
                 {skill.strengths.join(", ")}
               </p>
             )}
@@ -153,6 +215,7 @@ export default function ExecutiveResume({ data }) {
         )}
       </div>
 
+      {/* Certifications */}
       {cert?.length > 0 && (
         <section className="mt-5">
           <h2 className="uppercase font-bold tracking-wider text-vintageLavender border-b border-gray-300 pb-1">
@@ -160,7 +223,9 @@ export default function ExecutiveResume({ data }) {
           </h2>
 
           <p className="mt-2">
-            {cert.map((x) => x.certificationName).join(" • ")}
+            {cert
+              .map((x) => x.certificationName)
+              .join(" • ")}
           </p>
         </section>
       )}
